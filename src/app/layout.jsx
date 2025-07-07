@@ -1,3 +1,5 @@
+import NavBar from "@/components/other/navigation/NavBar";
+
 export const metadata = {
   title: "SmarProp",
   description:
@@ -6,8 +8,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-      <html lang="en">
-        <body className={`antialiased`}>{children}</body>
-      </html>
+    <html lang="en">
+      <body className={`antialiased`}>
+        <NavBar />
+        <section>{children}</section>
+      </body>
+    </html>
   );
 }
