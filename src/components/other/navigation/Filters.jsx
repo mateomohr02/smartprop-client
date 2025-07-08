@@ -1,26 +1,20 @@
 "use client";
 
-import { use, useState } from "react";
+import { use } from "react";
 import FilterOptions from "./FilterOptions";
 
-const Filters = ({ filtersPromise }) => {
-  const [show, setShow] = useState(false);
+const Filters = ({ filtersPromise, showFilters, setShowFilters }) => {
 
   const filters = use(filtersPromise);
 
-  console.log(filters, "FILTER COMPONENT");
-
   return (
-    <div>
-      {show ? (
-        <>
-          <FilterOptions options={filters} />
-          <button onClick={() => setShow(false)} >Ocultar Filtros</button>
-        </>
-      ) : (
-        <button onClick={() => setShow(true)}>Mostrar Filtros</button>
-      )}
-    </div>
+    <>
+      {showFilters ? (
+        <div>
+          <FilterOptions options={filters} setShowFilters={setShowFilters} />
+        </div >
+      ) : null}
+    </>
   );
 };
 
