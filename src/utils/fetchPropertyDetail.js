@@ -6,6 +6,7 @@ export const fetchPropertyDetail = async (slug) => {
         "Content-Type": "application/json",
         "X-Tenant-ID": process.env.TENANT_ID,
       },
+      cache: "force-cache",
       next: { revalidate: 3600 }, // ISR: revalidación cada 1 hora
     }
   );
