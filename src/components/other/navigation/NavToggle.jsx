@@ -8,7 +8,7 @@ const NavToggle = ({ show, setShow, setShowFilters }) => {
   return (
     <>
       {show ? (
-        <button onClick={() => setShow(false)}><X strokeWidth={1}/></button>
+        <button onClick={() => setShow(false)}><X className="text-contrast"/></button>
       ) : (
         <button
           onClick={() => {
@@ -16,7 +16,7 @@ const NavToggle = ({ show, setShow, setShowFilters }) => {
             setShowFilters(false);
           }}
         >
-          <Menu strokeWidth={1}/>
+          <Menu className="text-contrast"/>
         </button>
       )}
     </>

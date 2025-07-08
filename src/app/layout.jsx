@@ -2,6 +2,7 @@ import './globals.css'
  
 import NavBar from "@/components/other/navigation/NavBar";
 
+import Footer from "@/components/other/footer/Footer";
 export const metadata = {
   title: "SmarProp",
   description:
@@ -13,7 +14,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`antialiased`}>
         <NavBar />
-        <section>{children}</section>
+        <section className='min-h-[80vh]'>{children}</section>
+        <Footer />
       </body>
     </html>
   );

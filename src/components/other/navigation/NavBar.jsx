@@ -5,7 +5,7 @@ const NavBar = () => {
   const filters = fetchFilters();
 
   return (
-    <nav>
+    <nav className="absolute z-50 w-full">
         <Navigation filtersPromise={filters}/>
     </nav>
   );
