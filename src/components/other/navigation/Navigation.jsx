@@ -41,7 +41,7 @@ const Navigation = ({ filtersPromise }) => {
           setShowFilters={setShowFilters}
         />
       </div>
-      <motion.div layout>
+      <motion.div layout className="bg-contrast">
         <NavLinks
           show={showLinks}
           setShow={setShowLinks}

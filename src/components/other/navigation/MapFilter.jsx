@@ -9,10 +9,6 @@ const MapFilter = ({ setShowLinks, setShowFilters }) => {
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: -50, opacity: 0 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
         className="flex w-full border-y border-third bg-contrast"
         layout
       >
