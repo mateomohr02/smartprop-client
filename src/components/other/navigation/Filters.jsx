@@ -2,19 +2,22 @@
 
 import { use } from "react";
 import FilterOptions from "./FilterOptions";
+import { motion, AnimatePresence } from "framer-motion";
+
+
 
 const Filters = ({ filtersPromise, showFilters, setShowFilters }) => {
 
   const filters = use(filtersPromise);
 
   return (
-    <>
+    <AnimatePresence>
       {showFilters ? (
-        <div>
+        <motion.div layout>
           <FilterOptions options={filters} setShowFilters={setShowFilters} />
-        </div >
+        </motion.div >
       ) : null}
-    </>
+    </AnimatePresence>
   );
 };
 
