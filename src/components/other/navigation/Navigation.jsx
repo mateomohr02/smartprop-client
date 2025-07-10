@@ -25,6 +25,7 @@ const Navigation = ({ filtersPromise }) => {
             setShowLinks(false);
             setShowFilters(false);
           }}
+          aria-label="Ir al Menú de Inicio"
         >
           <Image
             alt="Logo Inmobiliaria"

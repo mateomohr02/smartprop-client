@@ -5,7 +5,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Cookies = () => {
-  const [cookieConsent, setCookieConsent] = useState(null);
+  const [cookieConsent, setCookieConsent] = useState(false);
   return (
     <AnimatePresence>
       {cookieConsent === null && (
