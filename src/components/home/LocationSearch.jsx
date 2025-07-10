@@ -1,6 +1,6 @@
 'use client'
 
-import { use, useState } from "react"
+import { use, useState, useEffect } from "react"
 
 const LocationSearch = ({ filtersPromise, location, setLocation }) => {
   const filters = use(filtersPromise)
@@ -17,7 +17,6 @@ const LocationSearch = ({ filtersPromise, location, setLocation }) => {
     const value = e.target.value
     setLocation(value)
 
-    // Filtrar por nombre que incluya lo ingresado (ignorando mayúsculas)
     const filtered = availableLocations.filter(loc =>
       loc.name.toLowerCase().includes(value.toLowerCase())
     )
@@ -30,7 +29,11 @@ const LocationSearch = ({ filtersPromise, location, setLocation }) => {
     setSuggestions([])
   }
 
-  const noMatches = location.length > 0 && suggestions.length === 0
+  // Nuevo: sólo mostrar el mensaje si el texto no coincide exactamente con ningún lugar
+  const noMatches =
+    location.length > 0 &&
+    suggestions.length === 0 &&
+    !availableLocations.some((loc) => loc.name.toLowerCase() === location.toLowerCase())
 
   return (
     <div className="relative w-full">
@@ -57,7 +60,8 @@ const LocationSearch = ({ filtersPromise, location, setLocation }) => {
 
           {noMatches && (
             <li className="px-3 py-2 text-sm text-gray-500 italic">
-              No tenemos propiedades disponibles en "<span className="font-medium">{location}</span>"
+              No tenemos propiedades disponibles en{" "}
+              <span className="font-medium">"{location}"</span>
             </li>
           )}
         </ul>
