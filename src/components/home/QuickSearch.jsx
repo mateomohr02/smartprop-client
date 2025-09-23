@@ -13,7 +13,7 @@ const QuickSearch = ( { filtersPromise } ) => {
     const [location, setLocation] = useState('');
     
   return (
-    <div className="relative w-[90%] md:w-[30%] mx-auto p-2 bg-contrast rounded-lg flex flex-col gap-2 -translate-y-1/2 z-30">
+    <div className="relative w-[90%] md:w-[40%] mx-auto p-2 bg-contrast rounded-lg flex flex-col gap-2 -translate-y-1/2 z-30">
     <Operation operation={operation} setOperation={setOperation} filtersPromise={filtersPromise}/>
     <PropertyTypeSelector propertyType={propertyType} setPropertyType={setPropertyType} filtersPromise={filtersPromise}/>
     <LocationSearch location={location} setLocation={setLocation} filtersPromise={filtersPromise}/>

@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`antialiased`}>
         <NavBar />
-        <section className='min-h-[80vh] pt-34 bg-blue-600'>{children}</section>
+        <section className='pt-34 bg-primary'>{children}</section>
         <Footer />
         <Cookies />
       </body>
