@@ -7,8 +7,8 @@ const PropertiesPage = () => {
   const propertiesPromise = fetchActiveProperties();
 
   return (
-    <div>
-      <h1>Properties</h1>
+    <div className="bg-contrast pt-6">
+      <h1 className="text-center text-xl text-secondary">Propiedades</h1>
       <Suspense fallback={<div>Loading...</div>}>
         <PropertiesList propertiesPromise={propertiesPromise} />
       </Suspense>

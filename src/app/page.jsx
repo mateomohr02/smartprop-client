@@ -2,6 +2,7 @@ import FeaturedProperties from "@/components/home/FeaturedProperties";
 import Hero from "@/components/home/Hero";
 import QuickSearch from "@/components/home/QuickSearch";
 import Services from "@/components/home/Services";
+import BlogSection from "@/components/home/BlogSection";
 import { fetchFilters } from "@/utils/fetchFilters";
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
       <QuickSearch filtersPromise={filters}/>
       <FeaturedProperties/>
       <Services/>
+      <BlogSection/>
     </>
   );
 };

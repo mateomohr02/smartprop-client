@@ -2,26 +2,18 @@
 
 import { use } from "react";
 
-import { ChevronRight } from "lucide-react";
-import Link from "next/link";
+import PropertyCard from "./PropertyCard";
+
 
 const PropertiesList = ({ propertiesPromise }) => {
   const properties = use(propertiesPromise);
 
   return (
-    <div>
-      {properties.map((p) => (
-        <div key={p.id}>
-          <Link href={`/propiedades/${p.slug}`}>{p.title}</Link>
-          <button
-            onClick={() => {
-              console.log("click");
-            }}
-          >
-            <ChevronRight />
-          </button>
-        </div>
-      ))}
+    <div className="flex justify-center flex-col gap-6 items-center py-6 ">
+      {properties.map((p) => {
+        return(
+        <PropertyCard key={p.id} linkTo={`/propiedades/${p.slug}`} property={p}/>
+      )})}
     </div>
   );
 };
