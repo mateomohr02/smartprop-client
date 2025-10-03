@@ -2,7 +2,7 @@
 
 import { use, useState, useEffect } from "react"
 
-const LocationSearch = ({ filtersPromise, location, setLocation }) => {
+const LocationSearch = ({ filtersPromise, location, setLocation, setLocationType, setLocationSlug }) => {
   const filters = use(filtersPromise)
 
   const [suggestions, setSuggestions] = useState([])
@@ -12,6 +12,9 @@ const LocationSearch = ({ filtersPromise, location, setLocation }) => {
     ...filters.cities.map(city => ({ ...city, type: "Ciudad" })),
     ...filters.neighborhoods.map(n => ({ ...n, type: "Barrio" }))
   ]
+
+  console.log(availableLocations, 'availableLocations');
+  
 
   const handleInputChange = (e) => {
     const value = e.target.value
@@ -26,6 +29,8 @@ const LocationSearch = ({ filtersPromise, location, setLocation }) => {
 
   const handleSuggestionClick = (name) => {
     setLocation(name)
+    setLocationSlug(availableLocations.find(loc => loc.name === name)?.slug || null)
+    setLocationType(availableLocations.find(loc => loc.name === name)?.type || null)
     setSuggestions([])
   }
 

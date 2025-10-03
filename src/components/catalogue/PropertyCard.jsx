@@ -35,7 +35,7 @@ const PropertyCard = ({ linkTo, property }) => {
 
         {/* Ciudad y barrio */}
         <p className="text-gray-500 text-xs">
-          [{property.Neighborhood?.name}], [{property.City?.name}]
+          {property.Neighborhood?.name}, {property.City?.name}
         </p>
       </div>
 
