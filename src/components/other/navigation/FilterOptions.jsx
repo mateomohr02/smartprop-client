@@ -29,6 +29,10 @@ const FilterOptions = ({
   setShowFilters,
   locationFilter,
   setLocationFilter,
+  locationTypeFilter,
+  setLocationTypeFilter,
+  displayLocation,
+  setDisplayLocation,
   operation,
   setOperation,
   propertyType,
@@ -60,6 +64,8 @@ const FilterOptions = ({
 }) => {
   const resetFilters = () => {
     setLocationFilter(null);
+    setLocationTypeFilter(null);
+    setDisplayLocation("");
     setOperation(null);
     setPropertyType(null);
     setPriceRange([null, null]);
@@ -91,6 +97,9 @@ const FilterOptions = ({
           neighborhoods={options.neighborhoods}
           locationFilter={locationFilter}
           setLocationFilter={setLocationFilter}
+          setLocationTypeFilter={setLocationTypeFilter}
+          displayLocation={displayLocation}
+          setDisplayLocation={setDisplayLocation}
         />
 
         <div className="flex gap-2">
@@ -141,6 +150,8 @@ const FilterOptions = ({
         {/* <ServicesFilter options={options.services} /> */}
         <SendResetButtons
           filters={{
+            locationFilter,
+            locationTypeFilter,
             operation,
             propertyType,
             priceRange,

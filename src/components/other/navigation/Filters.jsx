@@ -9,6 +9,8 @@ const Filters = ({ filtersPromise, showFilters, setShowFilters }) => {
   const filters = use(filtersPromise);
 
   const [locationFilter, setLocationFilter] = useState(null);
+  const [locationTypeFilter, setLocationTypeFilter] = useState(null);
+  const [displayLocation, setDisplayLocation] = useState("");
   const [operation, setOperation] = useState(null);
   const [propertyType, setPropertyType] = useState(null);
   const [priceRange, setPriceRange] = useState([null, null]);
@@ -32,7 +34,11 @@ const Filters = ({ filtersPromise, showFilters, setShowFilters }) => {
             options={filters}
             setShowFilters={setShowFilters}
             locationFilter={locationFilter}
+            locationTypeFilter={locationTypeFilter}
+            displayLocation={displayLocation}
+            setDisplayLocation={setDisplayLocation}
             setLocationFilter={setLocationFilter}
+            setLocationTypeFilter={setLocationTypeFilter}
             operation={operation}
             setOperation={setOperation}
             propertyType={propertyType}

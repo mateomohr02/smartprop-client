@@ -7,8 +7,11 @@ const LocationFilter = ({
   provinces,
   cities,
   neighborhoods,
-  locationFilter,
-  setLocationFilter,
+  locationFilter,          
+  setLocationFilter,        
+  setLocationTypeFilter,
+  displayLocation,
+  setDisplayLocation
 }) => {
   const [suggestions, setSuggestions] = useState([]);
 
@@ -21,24 +24,26 @@ const LocationFilter = ({
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    setLocationFilter(value);
+    setDisplayLocation(value);
     const filtered = availableLocations.filter((loc) =>
       loc.name.toLowerCase().includes(value.toLowerCase())
     );
     setSuggestions(value.length > 0 ? filtered : []);
   };
 
-  const handleSuggestionClick = (name) => {
-    setLocationFilter(name);
-    setSuggestions([]);
+  const handleSuggestionClick = (loc) => {
+    setDisplayLocation(loc.name);              // mostramos el nombre
+    setLocationFilter(loc.slug);            // guardamos el slug
+    setLocationTypeFilter(loc.type);        // guardamos el tipo
+    setSuggestions([]);                     // cerramos el listado
   };
 
   const noMatches =
-    locationFilter &&
-    locationFilter.length > 0 &&
+    displayLocation &&
+    displayLocation.length > 0 &&
     suggestions.length === 0 &&
     !availableLocations.some(
-      (loc) => loc.name.toLowerCase() === locationFilter.toLowerCase()
+      (loc) => loc.name.toLowerCase() === displayLocation.toLowerCase()
     );
 
   return (
@@ -50,13 +55,13 @@ const LocationFilter = ({
             locationFilter ? "text-gray-500" : "text-red-500"
           } text-sm`}
         >
-          Obligatiorio*
+          Obligatorio*
         </span>
       </p>
       <div className="relative w-full">
         <input
           type="text"
-          value={locationFilter}
+          value={displayLocation}
           onChange={handleInputChange}
           placeholder="Ingrese una Ciudad o Barrio"
           className="w-full py-2 border-2 border-secondary rounded-lg px-2"
@@ -67,7 +72,7 @@ const LocationFilter = ({
             {suggestions.map((loc) => (
               <li
                 key={loc.id}
-                onClick={() => handleSuggestionClick(loc.name)}
+                onClick={() => handleSuggestionClick(loc)}
                 className="px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm flex justify-between"
               >
                 <span>{loc.name}</span>
@@ -78,7 +83,7 @@ const LocationFilter = ({
             {noMatches && (
               <li className="px-3 py-2 text-sm text-gray-500 italic">
                 No tenemos propiedades disponibles en{" "}
-                <span className="font-medium">"{locationFilter}"</span>
+                <span className="font-medium">"{displayLocation}"</span>
               </li>
             )}
           </ul>
