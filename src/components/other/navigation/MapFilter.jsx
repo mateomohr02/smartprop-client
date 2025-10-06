@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-const MapFilter = ({ setShowLinks, setShowFilters }) => {
+const MapFilter = ({ showFilters, showLinks, setShowLinks, setShowFilters }) => {
   return (
     <AnimatePresence>
       <motion.div
@@ -18,12 +18,21 @@ const MapFilter = ({ setShowLinks, setShowFilters }) => {
         >
           Ver Mapa <MapPinned strokeWidth={1} size={16} />
         </Link>
+        <button 
+          onClick={() => {
+            setShowFilters(false);
+          }}
+          className={`${showFilters ? "flex" : "hidden" } w-[50%] justify-center py-2 items-center gap-1`}
+          >
+          Ocultar Filtros <SlidersHorizontal strokeWidth={1} size={16} />
+        </button>
+
         <button
           onClick={() => {
             setShowFilters(true);
             setShowLinks(false);
           }}
-          className="flex w-[50%] justify-center py-2 items-center gap-1"
+          className={`${showFilters ? "hidden" : "flex" } w-[50%] justify-center py-2 items-center gap-1`}
         >
           {" "}
           Filtrar <SlidersHorizontal strokeWidth={1} size={16} />

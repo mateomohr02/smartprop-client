@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 const PropertyTypeFilter = ({ options, propertyType, setPropertyType }) => {
   return (
     <div className="relative w-full">
-      <p className="mb-1">Inmueble:</p>
+      <p className="flex justify-between items-center">Inmueble: <span className={`${propertyType ? "text-gray-500": "text-red-500" } text-sm`}>Obligatiorio*</span></p>
 
       <div className="relative">
         <select

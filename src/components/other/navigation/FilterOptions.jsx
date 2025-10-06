@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+
+import LocationFilter from "./Filters/LocationFilter";
 
 import OperationFilter from "./Filters/OperationFilter";
 import PropertyTypeFilter from "./Filters/PropertyTypeFilter";
@@ -21,21 +22,59 @@ import ComoditiesFilter from "./Filters/ComoditiesFilter";
 
 import CharacteristicsFilter from "./Filters/CharacteristicsFilter";
 
-const FilterOptions = ({ options, setShowFilters }) => {
-  const [operation, setOperation] = useState(null);
-  const [propertyType, setPropertyType] = useState(null);
-  const [priceRange, setPriceRange] = useState([null, null]);
-  const [priceFIAT, setPriceFIAT] = useState("ARS");
-  const [expensesRange, setExpensesRange] = useState([null, null]);
-  const [expensesFIAT, setExpensesFIAT] = useState("ARS");
-  const [rooms, setRooms] = useState([null, null]);
-  const [bedrooms, setBedrooms] = useState([null, null]);
-  const [bathrooms, setBathrooms] = useState(0);
-  const [garages, setGarages] = useState(0);
-  const [roomTypes, setRoomTypes] = useState([]);
-  const [comodities, setComodities] = useState([]);
-  const [characteristics, setCharacteristics] = useState([]);
-  const [services, setServices] = useState([]);
+import SendResetButtons from "./Filters/SendResetButtons";
+
+const FilterOptions = ({
+  options,
+  setShowFilters,
+  locationFilter,
+  setLocationFilter,
+  operation,
+  setOperation,
+  propertyType,
+  setPropertyType,
+  priceRange,
+  setPriceRange,
+  priceFIAT,
+  setPriceFIAT,
+  expensesRange,
+  setExpensesRange,
+  expensesFIAT,
+  setExpensesFIAT,
+  rooms,
+  setRooms,
+  bedrooms,
+  setBedrooms,
+  bathrooms,
+  setBathrooms,
+  garages,
+  setGarages,
+  roomTypes,
+  setRoomTypes,
+  comodities,
+  setComodities,
+  characteristics,
+  setCharacteristics,
+  services,
+  setServices,
+}) => {
+  const resetFilters = () => {
+    setLocationFilter(null);
+    setOperation(null);
+    setPropertyType(null);
+    setPriceRange([null, null]);
+    setPriceFIAT(null);
+    setExpensesRange([null, null]);
+    setExpensesFIAT(null);
+    setRooms([null, null]);
+    setBedrooms([null, null]);
+    setBathrooms(0);
+    setGarages(0);
+    setRoomTypes([]);
+    setComodities([]);
+    setCharacteristics([]);
+    setServices([]);
+  };
 
   return (
     <AnimatePresence>
@@ -45,6 +84,15 @@ const FilterOptions = ({ options, setShowFilters }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
+        <LocationFilter
+          countries={options.countries}
+          provinces={options.provinces}
+          cities={options.cities}
+          neighborhoods={options.neighborhoods}
+          locationFilter={locationFilter}
+          setLocationFilter={setLocationFilter}
+        />
+
         <div className="flex gap-2">
           <OperationFilter operation={operation} setOperation={setOperation} />
           <PropertyTypeFilter
@@ -91,8 +139,26 @@ const FilterOptions = ({ options, setShowFilters }) => {
           setCharacteristics={setCharacteristics}
         />
         {/* <ServicesFilter options={options.services} /> */}
-
-        <button onClick={() => setShowFilters(false)}>Ocultar Filtros</button>
+        <SendResetButtons
+          filters={{
+            operation,
+            propertyType,
+            priceRange,
+            priceFIAT,
+            expensesRange,
+            expensesFIAT,
+            rooms,
+            bedrooms,
+            bathrooms,
+            garages,
+            roomTypes,
+            comodities,
+            characteristics,
+            services,
+          }}
+          setShowFilters={setShowFilters}
+          resetFilters={resetFilters}
+        />
       </motion.div>
     </AnimatePresence>
   );
