@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { normalizeText } from "@/utils/normalizeText"
 
 const LocationFilter = ({
   countries,
@@ -22,11 +23,12 @@ const LocationFilter = ({
     ...neighborhoods.map((n) => ({ ...n, type: "Barrio" })),
   ];
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e) => {    
     const value = e.target.value;
     setDisplayLocation(value);
+    const normalizedValue = normalizeText(value);
     const filtered = availableLocations.filter((loc) =>
-      loc.name.toLowerCase().includes(value.toLowerCase())
+      normalizeText(loc.name).includes(normalizedValue)
     );
     setSuggestions(value.length > 0 ? filtered : []);
   };
@@ -43,7 +45,7 @@ const LocationFilter = ({
     displayLocation.length > 0 &&
     suggestions.length === 0 &&
     !availableLocations.some(
-      (loc) => loc.name.toLowerCase() === displayLocation.toLowerCase()
+      (loc) => normalizeText(loc.name) === normalizeText(displayLocation)
     );
 
   return (

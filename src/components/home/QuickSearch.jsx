@@ -6,7 +6,6 @@ import SearchButton from "./SearchButton"
 import PropertyTypeSelector from "./PropertyTypeSelector"
 import LocationSearch from "./LocationSearch"
 
-
 const QuickSearch = ( { filtersPromise } ) => {
     const [operation, setOperation] = useState(null);
     const [propertyType, setPropertyType] = useState(null);

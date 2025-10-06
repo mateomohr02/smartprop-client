@@ -62,6 +62,7 @@ const FilterOptions = ({
   services,
   setServices,
 }) => {
+
   const resetFilters = () => {
     setLocationFilter(null);
     setLocationTypeFilter(null);

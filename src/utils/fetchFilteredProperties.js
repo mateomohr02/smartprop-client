@@ -1,18 +1,25 @@
-export const fetchFilteredProperties = async (filters) => {
+export const fetchFilteredProperties = async (filters, extraFilters) => {
 
-    const response = await fetch(`${process.env.API_BASE_URL}/properties/`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Tenant-ID': process.env.TENANT_ID
-        },
-        cache: 'force-cache',
-        next: { revalidate: 3600 }
-    })
+  const queryString = new URLSearchParams(extraFilters).toString();
 
-    const { properties }= await response.json(); 
+  const url = `${process.env.API_BASE_URL}/properties/catalogue/${filters}${
+    queryString ? `?${queryString}` : ""
+  }`;
 
-    return properties;
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Tenant-ID": process.env.TENANT_ID,
+    },
+    cache: "no-store",
+  });
 
+  if (!response.ok) {
+    return [];
+  }
 
+  const { properties } = await response.json();
+
+  return properties;
 };

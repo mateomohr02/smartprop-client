@@ -1,6 +1,8 @@
 'use client'
 
-import { use, useState, useEffect } from "react"
+import { use, useState } from "react"
+import { normalizeText } from "@/utils/normalizeText"
+
 
 const LocationSearch = ({ filtersPromise, location, setLocation, setLocationType, setLocationSlug }) => {
   const filters = use(filtersPromise)
@@ -13,15 +15,13 @@ const LocationSearch = ({ filtersPromise, location, setLocation, setLocationType
     ...filters.neighborhoods.map(n => ({ ...n, type: "Barrio" }))
   ]
 
-  console.log(availableLocations, 'availableLocations');
-  
-
   const handleInputChange = (e) => {
     const value = e.target.value
     setLocation(value)
+    const normalizedValue = normalizeText(value);
 
     const filtered = availableLocations.filter(loc =>
-      loc.name.toLowerCase().includes(value.toLowerCase())
+      normalizeText(loc.name).includes(normalizedValue)
     )
 
     setSuggestions(value.length > 0 ? filtered : [])
@@ -38,7 +38,7 @@ const LocationSearch = ({ filtersPromise, location, setLocation, setLocationType
   const noMatches =
     location.length > 0 &&
     suggestions.length === 0 &&
-    !availableLocations.some((loc) => loc.name.toLowerCase() === location.toLowerCase())
+    !availableLocations.some((loc) => normalizeText(loc.name) === normalizeText(location));
 
   return (
     <div className="relative w-full">
