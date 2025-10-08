@@ -5,6 +5,7 @@ import { Suspense } from "react";
 const PropertiesPage = () => {
   
   const propertiesPromise = fetchActiveProperties();
+  
 
   return (
     <div className="bg-contrast pt-6">

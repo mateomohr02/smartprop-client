@@ -8,7 +8,10 @@ const PropertyTypeSelector = ({ filtersPromise, propertyType, setPropertyType })
 
   const { availablePropertyTypes } = use(filtersPromise);
 
-  return (
+  console.log(availablePropertyTypes, 'availablePropertyTypes');
+  
+
+  return (  
     <div className="relative w-full">
       <select
         name="propertyType"

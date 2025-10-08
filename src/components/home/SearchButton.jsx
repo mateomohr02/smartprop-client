@@ -15,7 +15,7 @@ const SearchButton = ({ operation, propertyType, locationSlug, locationType, loc
 
 
   return (
-    <button className="w-full text-center bg-third rounded-lg py-2 px-4 text-contrast font-medium" onClick={handleSearch}>
+    <button className={`w-full text-center bg-third rounded-lg py-2 px-4 text-contrast font-medium transition-all ${!operation || !propertyType || !locationSlug || !locationType || !location? "pointer-events-none opacity-50" : ""}`} onClick={handleSearch}>
       Buscar
     </button>
   );

@@ -7,6 +7,8 @@ import PropertyCard from "./PropertyCard";
 
 const PropertiesList = ({ propertiesPromise }) => {
   const properties = use(propertiesPromise);
+  console.log(properties, "properties");
+  
 
   return (
     <div className="flex justify-center flex-col gap-6 items-center py-6 ">
