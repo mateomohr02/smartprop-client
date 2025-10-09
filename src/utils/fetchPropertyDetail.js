@@ -1,5 +1,5 @@
 export const fetchPropertyDetail = async (slug) => {
-  const respose = await fetch(
+  const response = await fetch(
     `${process.env.API_BASE_URL}/properties/detail/${slug}`,
     {
       headers: {
@@ -11,7 +11,7 @@ export const fetchPropertyDetail = async (slug) => {
     }
   );
 
-  const { property } = await respose.json();
+  const { property } = await response.json();
 
   return property;
 };
