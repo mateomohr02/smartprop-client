@@ -1,6 +1,13 @@
+import MetricComponent from "@/components/other/metric/MetricComponent"
+
 const page = () => {
+
+
+
   return (
-    <div>page</div>
+    <div>page
+      <MetricComponent name="visit_contact"/>
+    </div>
   )
 }
 

@@ -1,3 +1,4 @@
+import MetricComponent from "@/components/other/metric/MetricComponent";
 import { fetchPropertyDetail } from "@/utils/fetchPropertyDetail";
 import { notFound } from "next/navigation";
 
@@ -28,7 +29,10 @@ const PropertyDetailPage = async ({ params }) => {
   if (!property) {
     notFound()
   }
-  return <div>{property?.title}</div>;
+
+  return <div>{property?.title}
+  <MetricComponent name="interaction_prop" ids={[property.id]}/>
+  </div>;
 };
 
 export default PropertyDetailPage;
