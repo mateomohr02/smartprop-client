@@ -30,7 +30,7 @@ const PropertyCard = ({ linkTo, property }) => {
 
         {/* Dirección */}
         <p className="text-gray-600 font-medium">
-          Dirección 0000
+          {property.address}
         </p>
 
         {/* Ciudad y barrio */}
