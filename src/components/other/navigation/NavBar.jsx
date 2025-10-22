@@ -8,7 +8,7 @@ const NavBar = () => {
   return (
     <nav className="absolute z-50 w-full">
         <Navigation filtersPromise={filters}/>
-        <MetricComponent name="visit_site"/>"
+        <MetricComponent name="visit_site"/>
     </nav>
   );
 };

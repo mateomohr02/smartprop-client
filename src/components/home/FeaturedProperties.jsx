@@ -13,7 +13,7 @@ const FeaturedProperties = async () => {
       </h2>
       <div className="flex no-wrap gap-6">
         {featuredProperties.map(property => (
-            <PropertyCard key={property.id} linkTo={property?.slug} property={property}/>
+            <PropertyCard key={property.id} linkTo={`/propiedades/${property?.slug}`} property={property}/>
         ))}
       </div>
     </div>
